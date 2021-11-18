@@ -4,6 +4,9 @@
 // évolution de R1 par incrément de 2000.
 //
 
+
+	define SYSC_EXIT 100
+	define SYSC_PUTI 200
 	define INCR 2000
 
 	set R1, 0					// R1 = 0
@@ -15,4 +18,4 @@ loop:							// définir loop
 	nop							// ne rien faire
 	jump loop					// aller à loop
 end:
-	halt						// poweroff
+	sysc R0, R0, SYSC_EXIT     // Appel au système pour SYSC_EXIT
