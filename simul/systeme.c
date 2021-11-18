@@ -10,6 +10,8 @@
 #include "systeme.h"
 
 
+
+
 /**********************************************************
 ** Structures de données de l'ordonnanceur (représentation
 ** d'un ensemble de processus).
@@ -94,14 +96,23 @@ enum {
     SYSC_PUTI = 200,   // afficher le contenu de Ri
 };
 
+PSW sysc_exit(PSW c) {
+    exit(0);
+}
+
+PSW sysc_puti(PSW cpu) {
+    printf("Entier : %d \n", cpu.RI.arg);
+    return cpu;
+}
+
 static PSW process_system_call(PSW cpu) {
     // suivant l'argument de sysc Ri, Rj, ARG
     switch (cpu.RI.arg) {
         case SYSC_EXIT:
-            /* À FAIRE : réaliser l'appel système EXIT */
+            cpu = sysc_exit(cpu);
             break;
         case SYSC_PUTI:
-            /* À FAIRE : réaliser l'appel système PUTI */
+            cpu = sysc_puti(cpu);
             break;
         default:
             printf("Appel système inconnu %d\n", cpu.RI.arg);
