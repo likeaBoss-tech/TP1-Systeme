@@ -65,12 +65,22 @@ void change_state(int p, STATE new_state) {
 ***********************************************************/
 
 PSW scheduler(PSW cpu) {
-    printf("Fonction scheduler() à terminer\n");
-    return cpu;
+    /* À FAIRE : sauvegarder le processus courant si il existe */
+
+    if(current_process > 1)
+        {
+            process[current_process].cpu = cpu;
+        }
+    do {
+        current_process = (current_process + 1) % MAX_PROCESS;
+    } while (process[current_process].state != READY);
+    /* À FAIRE : relancer ce processus */
+    return process[current_process].cpu;
+
 }
 
-
 /**********************************************************
+
 ** Démarrage du système (création d'un programme)
 ***********************************************************/
 
