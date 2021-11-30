@@ -1,1 +1,3 @@
-TP1 : Simulation d’un processeur et d’un système
+# TP1-Systeme
+
+Nom  de binome : SMAIL AGHILAS ET ADDOUCHE WALID.
